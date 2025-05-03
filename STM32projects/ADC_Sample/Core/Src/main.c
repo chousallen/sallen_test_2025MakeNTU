@@ -1048,10 +1048,12 @@ void StartADCRoutine(void *argument)
     if(start_sample)
     {
     	// should know if capture data is enough and if should measure
-        captureData();
-        measure();
-        start_sample = 0;
-        start_plot = 1;
+    	captureData();
+        if (measure_done)
+        {
+        	// start_plot = 1;
+        	start_sample = 0;
+        }
     }
     osDelay(1);
   }

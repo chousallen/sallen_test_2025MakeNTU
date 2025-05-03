@@ -11,6 +11,7 @@
 // #include "main.h"
 #include "stdio.h"
 #include "stdint.h"
+#include "stdbool.h"
 #include "adc_routine.h"
 #include "temp_config.h"
 
@@ -38,6 +39,10 @@ extern double frequency_output;
 extern double period_output;
 
 extern int adc_intermediate_index;
+
+extern volatile bool trigger_found;
+extern volatile bool data_done;
+extern volatile bool measure_done;
 
 void captureData(void);
 void measure(void);
