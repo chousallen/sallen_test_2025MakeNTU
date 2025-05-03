@@ -73,7 +73,7 @@ const osThreadAttr_t adcRoutineTask_attributes = {
   .priority = (osPriority_t) osPriorityAboveNormal,
 };
 /* USER CODE BEGIN PV */
-
+int sample_done = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -1048,10 +1048,12 @@ void StartADCRoutine(void *argument)
     if(start_sample)
     {
     	// should know if capture data is enough and if should measure
-        captureData();
-        measure();
-        start_sample = 0;
-        start_plot = 1;
+    	sample_done = captureData();
+        if (sample_done)
+        {
+        	start_plot = 1;
+        	start_sample = 0;
+        }
     }
     osDelay(1);
   }
