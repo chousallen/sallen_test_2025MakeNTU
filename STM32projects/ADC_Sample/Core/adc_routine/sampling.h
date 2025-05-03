@@ -12,7 +12,7 @@
 #include "stdio.h"
 #include "stdint.h"
 #include "adc_routine.h"
-#include "temp_config.h"
+#include "global_val.h"
 
 #define ADC_INTERMEDIATE_SIZE	2
 
@@ -21,7 +21,7 @@
 extern int32_t time_scale;             // capture 1 data from every n points
 
 // extern uint8_t adc_buffer[3][4800];
-extern uint8_t adc_intermediate[ADC_INTERMEDIATE_SIZE][SCREEN_SIZE];   // should initialize
+extern uint8_t adc_intermediate[ADC_INTERMEDIATE_SIZE][LCD_NUM_POINT];   // should initialize
 // extern int8_t screen_data[SCREEN_DATA_SIZE];
 
 extern uint8_t trigger_level;    // 0-255, 128 is the middle level

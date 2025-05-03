@@ -5,12 +5,12 @@
  *      Author: choua
  */
 
-#ifndef INC_TEMP_CONFIG_H_
-#define INC_TEMP_CONFIG_H_
+#ifndef INC_GLOBAL_VAL_H_
+#define INC_GLOBAL_VAL_H_
 
 #include <stdint.h>
 
-#define SCREEN_SIZE  200 // 200 points on the screen
+#define LCD_NUM_POINT  200 // 200 points on the screen
 extern uint8_t trigger_level; // 0-255
 extern uint8_t offset; // 0-255
 

@@ -17,7 +17,7 @@ uint8_t trigger_found = 0;
 
 // uint8_t adc_buffer[3][4800];
 // data points to screen
-uint8_t adc_intermediate[ADC_INTERMEDIATE_SIZE][SCREEN_SIZE] = {0};
+uint8_t adc_intermediate[ADC_INTERMEDIATE_SIZE][LCD_NUM_POINT] = {0};
 // int8_t screen_data[SCREEN_DATA_SIZE];
 
 uint8_t* adc_intermediate_start_ptr;
@@ -25,7 +25,7 @@ uint8_t* adc_intermediate_end_ptr;		// closed
 
 int adc_intermediate_index = 0;
 uint8_t* adc_intermediate_ptr;
-int half_screen_size = SCREEN_SIZE / 2;
+int half_screen_size = LCD_NUM_POINT / 2;
 int half_one_adc_buffer_size = ADC_BUFFER_HALF_LEN;
 
 extern uint8_t trigger_level;    // 0-255, 128 is the middle level
@@ -88,7 +88,7 @@ void captureData(void)
     }
 
     adc_intermediate_start_ptr = adc_intermediate[adc_intermediate_index];
-    adc_intermediate_end_ptr = adc_intermediate_start_ptr + SCREEN_SIZE - 1;
+    adc_intermediate_end_ptr = adc_intermediate_start_ptr + LCD_NUM_POINT - 1;
 
     screen_frame_start_ptr = adc_intermediate_start_ptr;
     screen_frame_end_ptr = adc_intermediate_end_ptr;
@@ -171,7 +171,7 @@ void measure(void)
     min_val = prev_val;
     screen_measure_ptr = (screen_measure_ptr == screen_frame_end_ptr) ? screen_frame_start_ptr : screen_measure_ptr + 1;
 
-    for (measure_loop_index = 1; measure_loop_index < SCREEN_SIZE; measure_loop_index++)
+    for (measure_loop_index = 1; measure_loop_index < LCD_NUM_POINT; measure_loop_index++)
     {
         curr_val = *screen_measure_ptr;
         if (((prev_val >= trigger_level) && (curr_val < trigger_level)) || ((prev_val <= trigger_level) && (curr_val > trigger_level)))
@@ -187,7 +187,7 @@ void measure(void)
     }
 
     v_pp_output = (double)(max_val - min_val) * (ADC_VOLTAGE_MAX - ADC_VOLTAGE_MIN) / 255.0;
-    frequency_output = (double)(trigger_crossing_count * ADC_SAMPLE_RATE) / (2 * SCREEN_SIZE * time_scale);
+    frequency_output = (double)(trigger_crossing_count * ADC_SAMPLE_RATE) / (2 * LCD_NUM_POINT * time_scale);
     period_output = 1.0 / frequency_output;
 
 }
