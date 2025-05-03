@@ -40,12 +40,12 @@ extern double period_output;
 
 extern int adc_intermediate_index;
 
-extern volatile bool trigger_found;
-extern volatile bool data_done;
-extern volatile bool measure_done;
+extern volatile uint8_t trigger_found;
+// extern volatile uint8_t data_done;
+extern volatile uint8_t measure_done;
 
-void captureData(void);
-void measure(void);
+int captureData(void);
+// void measure(void);
 
 
 #endif /* ADC_SAMPLING_SAMPLING_H_ */
