@@ -1,0 +1,6 @@
+[submodule "Sampling/MakeNTU2025"]
+	path = Sampling/MakeNTU2025
+	url = git@github.com:ymtuan/MakeNTU2025.git
+[submodule "STM32projects/MakeNTU_2025"]
+	path = STM32projects/MakeNTU_2025
+	url = git@github.com:chuanEgg/MakeNTU_2025.git
