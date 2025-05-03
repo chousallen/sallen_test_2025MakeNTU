@@ -1047,6 +1047,7 @@ void StartADCRoutine(void *argument)
   {
     if(start_sample)
     {
+    	// should know if capture data is enough and if should measure
         captureData();
         measure();
         start_sample = 0;
